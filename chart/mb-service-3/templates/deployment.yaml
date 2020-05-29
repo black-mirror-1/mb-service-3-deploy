@@ -1,10 +1,10 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: {{ template "mb-service.fullname" . }}
+  name: {{ template "mb-service-3.fullname" . }}
   labels:
-    app: {{ template "mb-service.name" . }}
-    chart: {{ template "mb-service.chart" . }}
+    app: {{ template "mb-service-3.name" . }}
+    chart: {{ template "mb-service-3.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
     environment: {{ .Values.environment }}
@@ -12,12 +12,12 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ template "mb-service.name" . }}
+      app: {{ template "mb-service-3.name" . }}
       release: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ template "mb-service.name" . }}
+        app: {{ template "mb-service-3.name" . }}
         release: {{ .Release.Name }}
         environment: {{ .Values.environment }}
     spec:

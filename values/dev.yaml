@@ -1,4 +1,4 @@
 replicaCount: 1
-environment: dev
+environment: pre-prod
 image:
     name: 693885100167.dkr.ecr.us-east-2.amazonaws.com/master-builder/sample-service-2:v9
