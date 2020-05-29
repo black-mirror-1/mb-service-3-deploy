@@ -4,19 +4,18 @@ metadata:
   name: {{ template "mb-service-3.fullname" . }}
   labels:
     appName: {{ template "mb-service-3.name" . }}
-    releaseName: {{ .Release.Name }}
     environment: {{ .Values.environment }}
+  annotations:
+    strategy.spinnaker.io/max-version-history: {{ .Values.spinnaker-max-revision-history }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       appName: {{ template "mb-service-3.name" . }}
-      releaseName: {{ .Release.Name }}
   template:
     metadata:
       labels:
         appName: {{ template "mb-service-3.name" . }}
-        releaseName: {{ .Release.Name }}
         environment: {{ .Values.environment }}
     spec:
       containers:
