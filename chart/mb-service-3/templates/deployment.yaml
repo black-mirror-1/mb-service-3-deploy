@@ -3,22 +3,20 @@ kind: Deployment
 metadata:
   name: {{ template "mb-service-3.fullname" . }}
   labels:
-    app: {{ template "mb-service-3.name" . }}
-    chart: {{ template "mb-service-3.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+    appName: {{ template "mb-service-3.name" . }}
+    releaseName: {{ .Release.Name }}
     environment: {{ .Values.environment }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ template "mb-service-3.name" . }}
-      release: {{ .Release.Name }}
+      appName: {{ template "mb-service-3.name" . }}
+      releaseName: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ template "mb-service-3.name" . }}
-        release: {{ .Release.Name }}
+        appName: {{ template "mb-service-3.name" . }}
+        releaseName: {{ .Release.Name }}
         environment: {{ .Values.environment }}
     spec:
       containers:

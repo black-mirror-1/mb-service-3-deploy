@@ -6,7 +6,6 @@ metadata:
     app: {{ template "mb-service-3.name" . }}
     chart: {{ template "mb-service-3.chart" . }}
     release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
 spec:
   type: {{ .Values.service.type }}
   ports:
