@@ -6,8 +6,6 @@ replicaCount: 2
 environment: pre-prod
 riskLevel: low-risk
 
-spinnaker-max-revision-history: 2
-
 image:
   name: mb-service-3
   pullPolicy: IfNotPresent

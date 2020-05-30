@@ -5,8 +5,6 @@ metadata:
   labels:
     appName: {{ template "mb-service-3.name" . }}
     environment: {{ .Values.environment }}
-  annotations:
-    strategy.spinnaker.io/max-version-history: {{ .Values.spinnaker-max-revision-history }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
