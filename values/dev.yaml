@@ -1,4 +1,5 @@
 replicaCount: 5
 environment: pre-prod
 image:
-    name: 693885100167.dkr.ecr.us-east-2.amazonaws.com/master-builder/sample-service-2:v10
+    imageName: 693885100167.dkr.ecr.us-east-2.amazonaws.com/master-builder/sample-service-3
+    imageTag: v9
