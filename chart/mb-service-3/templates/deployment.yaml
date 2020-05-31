@@ -5,6 +5,7 @@ metadata:
   labels:
     appName: {{ template "mb-service-3.name" . }}
     environment: {{ .Values.environment }}
+  namespace: {{ .Values.namespace }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:

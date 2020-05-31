@@ -5,6 +5,7 @@
 replicaCount: 2
 environment: pre-prod
 riskLevel: low-risk
+namespace: master-builder-pre-prod
 
 image:
   name: mb-service-3
