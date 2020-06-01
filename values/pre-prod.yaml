@@ -2,5 +2,5 @@ replicaCount: 5
 environment: pre-prod
 image:
     imageName: 693885100167.dkr.ecr.us-east-2.amazonaws.com/master-builder/sample-service-3
-    imageTag: v1
+    imageTag: v2
 namespace: master-builder-pre-prod
