@@ -4,18 +4,19 @@ metadata:
   name: {{ template "mb-service-3.fullname" . }}
   labels:
     appName: {{ template "mb-service-3.name" . }}
-    environment: {{ .Values.environment }}
+    env: {{ .Values.environment }}
   namespace: {{ .Values.namespace }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       appName: {{ template "mb-service-3.name" . }}
+      env: {{ .Values.environment }}
   template:
     metadata:
       labels:
         appName: {{ template "mb-service-3.name" . }}
-        environment: {{ .Values.environment }}
+        env: {{ .Values.environment }}
     spec:
       containers:
         - name: {{ .Chart.Name }}

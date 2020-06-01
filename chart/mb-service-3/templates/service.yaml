@@ -12,3 +12,4 @@ spec:
       name: http
   selector:
     app: {{ template "mb-service-3.name" . }}
+    environment: {{ .Values.environment }}
