@@ -1,25 +1,27 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: {{ template "mb-service-3.fullname" . }}
+  name: {{ template "mb-service.fullname" . }}
   labels:
-    appName: {{ template "mb-service-3.name" . }}
+    appName: {{ .Values.appName }}
     env: {{ .Values.environment }}
   namespace: {{ .Values.namespace }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      appName: {{ template "mb-service-3.name" . }}
+      appName: {{ .Values.appName }}
       env: {{ .Values.environment }}
   template:
     metadata:
       labels:
-        appName: {{ template "mb-service-3.name" . }}
+        appName: {{ .Values.appName }}
         env: {{ .Values.environment }}
     spec:
+      nodeSelector:
+        intent: {{ .Values.environment }}-{{ .Values.riskLevel }}
       containers:
-        - name: {{ .Chart.Name }}
+        - name: {{ .Values.appName }}
           image: {{ .Values.image.imageName }}:{{ .Values.image.imageTag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
@@ -36,23 +38,3 @@ spec:
               port: http
           resources:
 {{ toYaml .Values.resources | indent 12 }}
-    {{- with .Values.nodeSelector }}
-      nodeSelector:
-{{ toYaml . | indent 8 }}
-    {{- end }}
-    {{- with .Values.affinity }}
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: intent
-                    operator: In
-                    values:
-                      - {{ .Values.environment }}-{{ .Values.intent }}
-{{ toYaml . | indent 8 }}
-    {{- end }}
-    {{- with .Values.tolerations }}
-      tolerations:
-{{ toYaml . | indent 8 }}
-    {{- end }}
